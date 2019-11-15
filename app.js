@@ -28,3 +28,13 @@ app.get('/api/v1/papers', (request, response) => {
       response.status(500).json({ error });
     });
 });
+
+app.get('/api/v1/footnotes', (request, response) => {
+  database('footnotes').select()
+  .then((footnotes) => {
+    response.status(200).json(footnotes);
+  })
+  .catch((error) => {
+    response.status(500).json({ error });
+  });
+});
